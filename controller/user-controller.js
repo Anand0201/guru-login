@@ -74,7 +74,7 @@ async function Data(req, res) {
             }
             
         } else {
-            return res.alert("User not found");
+            return res.send("User not found");
         }
 
     } catch (error) {
