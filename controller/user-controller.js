@@ -59,18 +59,27 @@ async function Data(req, res) {
                 res.end(pdfBytes);
             }
             else if(userData[0].categories == "Runner up"){
-                const name = userData[0].name;
-                const eventName = userData[0].technicalevent;
                 console.log(name, eventName);
+                
                 runner(name, eventName);
-                const pdfBytes = await runner(name, eventname);
-                console.log(pdfBytes);
+                const winnerPdfBytes = await runner(name, eventname);
+                
+                participate(name, eventName);
+                const participatePdfBytes = await participate(name, eventname);
+                
+                
+                const zip = new JSZip();
+                zip.file(`${name}-winner-certificate.pdf`, winnerPdfBytes);
+                zip.file(`${name}-certificate.pdf`, participatePdfBytes);
+
+                const zipBytes = await zip.generateAsync({ type: "nodebuffer" });
+
                 res.writeHead(200, {
-                        'Content-Disposition': `attachment; filename="${name}-certificate.pdf"`,
-                        'Content-Type': 'application/pdf',
-                        'Content-Length': pdfBytes.length
-                })
-                res.end(pdfBytes);
+                        'Content-Disposition': `attachment; filename="${name}-certificates.zip"`,
+                        'Content-Type': 'application/zip',
+                        'Content-Length': zipBytes.length
+                });
+                res.end(zipBytes);
             }
             
         } else {
