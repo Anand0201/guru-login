@@ -87,3 +87,8 @@ select {
     width: 100px;
     border-radius: 10px;
 }
+
+.user {
+    height: 170px;
+    width: auto;
+}

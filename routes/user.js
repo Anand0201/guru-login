@@ -5,9 +5,14 @@ const router = express.Router();
 
 router.get('/', display);
 router.post('/login', Data);
+router.get('/error', error);
 
 function display(req, res) {
     res.render("login");
+}
+
+function error(req, res) {
+    res.render("error");
 }
 
 

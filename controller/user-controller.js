@@ -83,7 +83,7 @@ async function Data(req, res) {
             }
             
         } else {
-            return res.send("User not found");
+            return res.redirect("/error");
         }
 
     } catch (error) {
