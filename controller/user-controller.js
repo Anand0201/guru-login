@@ -48,8 +48,8 @@ async function Data(req, res) {
                 const name = userData[0].name;
                 const eventName = userData[0].technicalevent;
                 console.log(name, eventName);
-                runner(name, eventName);
-                const pdfBytes = await runner(name, eventname);
+                participate(name, eventName);
+                const pdfBytes = await participate(name, eventname);
                 console.log(pdfBytes)
                 res.writeHead(200, {
                         'Content-Disposition': `attachment; filename="${name}-certificate.pdf"`,
