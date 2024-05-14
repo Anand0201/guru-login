@@ -2,6 +2,14 @@ import { PDFDocument } from "pdf-lib";
 import { rgb } from "pdf-lib";
 import  fs  from "fs";
 
+const capitalizeFirstLetter = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  };
+
+const capitalizeFirstLetter2 = (str) => {
+    return str.replace(/\b\w/g, (char) => char.toUpperCase());
+};
+
 const cordinates =  async(name, eventname) => {
     let certificate = "./cordi.pdf";
     const existing = fs.readFileSync(certificate)
@@ -11,7 +19,11 @@ const cordinates =  async(name, eventname) => {
 
     firstPage.drawText(name, {
         x: 340, y: 280, size: 20, color: rgb(0, 0, 0)
-      });
+    });
+    
+    firstPage.drawText("------------", {
+        x: 340, y: 280, size: 20, color: rgb(0, 0, 0)
+    });
     
     firstPage.drawText(eventname, {
         x: 340, y: 250, size: 18, color: rgb(0, 0, 0),

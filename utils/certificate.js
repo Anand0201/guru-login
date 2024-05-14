@@ -2,6 +2,14 @@ import { PDFDocument } from "pdf-lib";
 import { rgb } from "pdf-lib";
 import  fs  from "fs";
 
+const capitalizeFirstLetter = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  };
+
+const capitalizeFirstLetter2 = (str) => {
+    return str.replace(/\b\w/g, (char) => char.toUpperCase());
+};
+
 const participate =  async(name, eventname) => {
     let certificate = "./cer.pdf";
     const existing = fs.readFileSync(certificate)
@@ -9,11 +17,11 @@ const participate =  async(name, eventname) => {
 
     const firstPage = pdfDoc.getPages()[0];;
 
-    firstPage.drawText(name, {
+    firstPage.drawText(capitalizeFirstLetter2(name), {
         x: 340, y: 280, size: 20, color: rgb(0, 0, 0)
       });
     
-    firstPage.drawText(eventname, {
+    firstPage.drawText(capitalizeFirstLetter(eventname), {
         x: 340, y: 250, size: 18, color: rgb(0, 0, 0),
     });
     const pdfBytes = await pdfDoc.save();

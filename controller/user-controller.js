@@ -44,7 +44,7 @@ async function Data(req, res) {
                 res.end(zipBytes);
 
             }
-            else if(userData[0].categories == "Participate"){
+            else if(userData[0].categories == "participate"){
                 const name = userData[0].name;
                 const eventName = userData[0].technicalevent;
                 console.log(name, eventName);
@@ -80,6 +80,20 @@ async function Data(req, res) {
                         'Content-Length': zipBytes.length
                 });
                 res.end(zipBytes);
+            }
+            else if(userData[0].categories == "coordinate"){
+                const name = userData[0].name;
+                const eventName = userData[0].technicalevent;
+                console.log(name, eventName);
+                cordinates(name, eventName);
+                const pdfBytes = await cordinates(name, eventname);
+                console.log(pdfBytes)
+                res.writeHead(200, {
+                        'Content-Disposition': `attachment; filename="${name}-certificate.pdf"`,
+                        'Content-Type': 'application/pdf',
+                        'Content-Length': pdfBytes.length
+                })
+                res.end(pdfBytes);
             }
             
         } else {
