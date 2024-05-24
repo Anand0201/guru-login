@@ -11,6 +11,6 @@ const schema = mongoose.Schema({
     winner: { type: String },
 });
 
-const database = mongoose.models["techevent-volunteer"] || mongoose.model("techevent-volunteer", schema);
+const volunteer = mongoose.models["techevent-volunteer"] || mongoose.model("techevent-volunteer", schema);
 
-export default database
+export default volunteer

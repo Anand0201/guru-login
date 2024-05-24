@@ -1,6 +1,7 @@
 import participate from "../utils/certificate.js";
 import winner from "../utils/winner.js";
 import database from "../models/user-model.js";
+import volunteer from "../models/volunteer.js";
 import runner from "../utils/runner.js";
 import cordinates from "../utils/cordinate.js";
 import JSZip from "jszip";
@@ -14,7 +15,9 @@ async function Data(req, res) {
         console.log(username, userphone, eventname, winners);
 
         const userData = await database.find({ name: username, phone: userphone, technicalevent: eventname, categories: winners });
-        console.log(userData)
+        const vol = await volunteer.find({ name: username, phone: userphone, technicalevent: eventname, categories: winners })
+        console.log(userData);
+        console.log(vol);
 
         if(userData && userData.length > 0) {
             const name = userData[0].name;
@@ -81,9 +84,9 @@ async function Data(req, res) {
                 });
                 res.end(zipBytes);
             }
-            else if(userData[0].categories == "coordinate"){
-                const name = userData[0].name;
-                const eventName = userData[0].technicalevent;
+            else if(userData[0].categories == "coordinator"){
+                const name = vol[0].name;
+                const eventName = vol[0].technicalevent;
                 console.log(name, eventName);
                 cordinates(name, eventName);
                 const pdfBytes = await cordinates(name, eventname);

@@ -18,15 +18,19 @@ const cordinates =  async(name, eventname) => {
     const firstPage = pdfDoc.getPages()[0];;
 
     firstPage.drawText(name, {
-        x: 340, y: 280, size: 20, color: rgb(0, 0, 0)
+        x: 340, y: 265, size: 20, color: rgb(0, 0, 0)
     });
     
-    firstPage.drawText("------------", {
-        x: 340, y: 280, size: 20, color: rgb(0, 0, 0)
+    firstPage.drawText("-----------------", {
+        x: 255, y: 227, size: 20, color: rgb(0, 0, 0)
+    });
+
+    firstPage.drawText("---------------", {
+        x: 380, y: 227, size: 20, color: rgb(0, 0, 0)
     });
     
     firstPage.drawText(eventname, {
-        x: 340, y: 250, size: 18, color: rgb(0, 0, 0),
+        x: 595, y: 227, size: 18, color: rgb(0, 0, 0),
     });
     const pdfBytes = await pdfDoc.save();
 
