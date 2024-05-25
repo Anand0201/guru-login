@@ -20,9 +20,9 @@
         <div class="event-form">
             <h1>Take Your E-Certificate</h1>
             <form action="/login" class="form-event" method="post">
-                <input type="text" class="input-item" placeholder="Name" name="name">
-                <input type="text" class="input-item" placeholder="Phone" name="phone">
-                <select name="event" id="event" placeholder="event name">
+                <input type="text" class="input-item" placeholder="Name" name="name" required>
+                <input type="text" class="input-item" placeholder="Phone" name="phone" required>
+                <select name="event" id="event" placeholder="event name" required>
                     <option value="">Select Event</option>
                     <option value="UI/UX Design ">UI/UX Design</option>
                     <option value="Fiber-o-soil strength">Fiber-o-soil strength</option>
@@ -32,8 +32,9 @@
                     <option value="Job -O-Lathe">Job -O-Lathe</option>
                     <option value="CAD MANIA">CAD MANIA</option>
                     <option value="DARE DARING">Dare Daring</option>
+                    <option value="technical civil">Technical Civil</option>
                 </select>
-                <select name="winner" id="event">
+                <select name="winner" id="event" required>
                     <option value="">Select Categories</option>
                     <option value="Winner">Winner</option>
                     <option value="participate">Participate</option>

@@ -25,8 +25,12 @@ const eventcordinates =  async(name, eventname) => {
         x: 255, y: 227, size: 20, color: rgb(0, 0, 0)
     });
 
-    firstPage.drawText("---------------", {
-        x: 480, y: 227, size: 20, color: rgb(0, 0, 0)
+    firstPage.drawText("-------------", {
+        x: 492, y: 227, size: 20, color: rgb(0, 0, 0)
+    });
+
+    firstPage.drawText("----------------", {
+        x: 190, y: 194, size: 20, color: rgb(0, 0, 0)
     });
     
     firstPage.drawText(capitalizeFirstLetter(eventname), {
