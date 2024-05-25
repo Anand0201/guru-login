@@ -10,7 +10,7 @@ const capitalizeFirstLetter2 = (str) => {
     return str.replace(/\b\w/g, (char) => char.toUpperCase());
 };
 
-const cordinates =  async(name, eventname) => {
+const eventcordinates =  async(name, eventname) => {
     let certificate = "./cordi.pdf";
     const existing = fs.readFileSync(certificate)
     const pdfDoc = await PDFDocument.load(existing);
@@ -26,15 +26,15 @@ const cordinates =  async(name, eventname) => {
     });
 
     firstPage.drawText("---------------", {
-        x: 380, y: 227, size: 20, color: rgb(0, 0, 0)
+        x: 480, y: 227, size: 20, color: rgb(0, 0, 0)
     });
     
     firstPage.drawText(capitalizeFirstLetter(eventname), {
-        x: 595, y: 227, size: 18, color: rgb(0, 0, 0),
+        x: 595, y: 227, size: 15, color: rgb(0, 0, 0),
     });
     const pdfBytes = await pdfDoc.save();
 
     return pdfBytes
 };
 
-export default cordinates;
+export default eventcordinates;
