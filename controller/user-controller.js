@@ -13,8 +13,8 @@ async function Data(req, res) {
         const { name: username, phone: userphone, event: eventname, winner: winners } = req.body;
         console.log(username, userphone, eventname, winners);
 
-        const userData = await database.find({ name: username, phone: userphone, technicalevent: eventname, categories: winners });
-        const vol = await volunteer.find({ name: username, phone: userphone, technicalevent: eventname, categories: winners });
+        const userData = await database.find({ name: username, phone: userphone });
+        const vol = await volunteer.find({ name: username, phone: userphone, categories: winners });
         console.log(userData);
         console.log(vol);
 
