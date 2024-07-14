@@ -15,7 +15,7 @@ const cordinates =  async(name, eventname) => {
     const existing = fs.readFileSync(certificate)
     const pdfDoc = await PDFDocument.load(existing);
 
-    const firstPage = pdfDoc.getPages()[0];;
+    const firstPage = pdfDoc.getPages()[0];
 
     firstPage.drawText(capitalizeFirstLetter2(name), {
         x: 340, y: 265, size: 20, color: rgb(0, 0, 0)
